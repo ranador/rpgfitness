@@ -1,0 +1,61 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block custom-css %}
+<link rel="stylesheet" href="{% static 'styles/upload-style.css' %}">
+{% endblock custom-css %}
+
+
+{% block title %}Update Database{% endblock title %}
+            <!-- Page content -->
+            {% block content %}
+
+                <form id="upload-form" method="post">
+                    {% csrf_token %}
+                    <input type="file" id="file-input" name="files" multiple style="display: none;">
+                    <div id="drop-zone" class="upload-box" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                        <img src="{% static 'images/cloud.png' %}" alt="Upload icon" class="upload-icon">
+                        <p>Drag and drop files here</p>
+                    </div>
+                </form>
+
+                <div class="file-uploaded-list">
+                    {% for file in files %}
+                        <div class="file-uploaded-list-cell">
+                            <div class="file-uploaded-image">
+                                <img src="/media/{{ file }}" alt="Uploaded image" class="max-w-md mb-4"> 
+                            </div>
+                            <div class="file-uploaded-filename">{{file}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            
+
+                {% comment %} Boxes for testing layout  {% endcomment %}
+                {% comment %} <div class="file-uploaded-list">
+                        <div class="file-uploaded-list-cell">
+                            <div class="file-uploaded-image">
+                                <img src="/media/uploads/test1.jpg" alt="Uploaded image" class="max-w-md mb-4"> 
+                            </div>
+                            <div class="file-uploaded-filename">/media/test1.jpg</div>
+                        </div>
+                        <div class="file-uploaded-list-cell">
+                            <div class="file-uploaded-image">
+                                <img src="/media/uploads/test2.jpg" alt="Uploaded image" class="max-w-md mb-4"> 
+                            </div>
+                            <div class="file-uploaded-filename">/media/test2.jpg</div>
+                        </div>
+                        <div class="file-uploaded-list-cell">
+                            <div class="file-uploaded-image">
+                                <img src="/media/uploads/test3.jpg" alt="Uploaded image" class="max-w-md mb-4"> 
+                            </div>
+                            <div class="file-uploaded-filename">/media/test3.jpg</div>
+                        </div>
+                </div> {% endcomment %}
+
+                <div class="vertical-buffer">&nbsp;</div>
+
+            {% endblock content %}
+
+            {% block footer %}(c) Copyright 2024{% endblock footer %}
+

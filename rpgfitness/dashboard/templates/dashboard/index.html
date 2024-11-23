@@ -1,36 +1,26 @@
+{% extends "dashboard/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Basic HTML template">
-    <meta name="author" content="Your Name">
-    
-    <title>Document Title</title>
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-    
-</head>
-<body>
-    <div class="page-layout">
-        <div class="margin-left">&nbsp;</div>
-        <div class="main-column">
-            <!-- Navbar -->
-            <div class="nav-container">
-                <div class="nav-text">Test</div>
-                <div class="nav-button-container">
-                    <div class="nav-button"><a href="{% url 'index' %}">Home</a></div>
-                    <div class="nav-other-buttons">
-                        <div class="nav-button">Update</div>
-                        <div class="nav-button">Settings</div>
-                        <div class="nav-button"><a href="{% url 'contact' %}">Contact</a></div>
-                    </div>
-                </div>
-            </div>
+{% block custom-css %}
+<link rel="stylesheet" href="{% static 'styles/character-sheet-style.css' %}">
+{% endblock custom-css %}
+
+{% block title %}RPG Fitness Dashboard{% endblock title %}
             <!-- Page content -->
-            <div class="content">
-                <div class="character-sheet">&nbsp;</div>
+             {% block content %}
+             <div class="content">
+                <div class="character-sheet">
+                    <div class="profile-pic"><img src="{% static 'images/profile-pics/bantha.jpg' %}"></div>
+                    <div class="character-sheet-cell">
+                        <div class="user-name">Bantha</div>
+                        <div class="level-badge">
+                            <div class="level-badge-text">Level</div>
+                            <div class="level-badge-value">60</div>
+                        </div>
+                    </div>
+                    <div>Test</div>
+                    <div>Test</div>
+                </div>
                 <div class="weight-chart">&nbsp;</div>
                 <div>
                     <form action="{% url 'contact' %}" method="get">
@@ -42,12 +32,6 @@
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
             </div>
-            <!-- Page content -->
-            <div class="footer">
-                (c) Copyright 2024
-            </div>  
-        </div>
-        <div class="margin-right">&nbsp;</div>
-    </div>
-</body>
-</html>
+            {% endblock content %}
+
+            {% block footer %}(c) Copyright 2024{% endblock footer %}

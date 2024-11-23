@@ -29,6 +29,7 @@
 
 a {
     text-decoration: none;
+    font-size: inherit;
     color: inherit;
 }
 
@@ -50,10 +51,11 @@ a {
 }
 
 .main-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     background-color: var(--content-bg);
-    min-height: 90vh;
-    /* border-left: 2px solid var(--nav-bar);
-    border-right: 2px solid var(--nav-bar); */
+    min-height: 100vh;
 }
 
 .content{
@@ -65,7 +67,6 @@ a {
     color: var(--dark-text);
     min-height: 90vh;
     padding: 1rem;
-    /* border-top: 2px solid var(--nav-bar); */
 }
 
 .footer{
@@ -78,62 +79,8 @@ a {
     border: 2px solid var(--nav-bar);
 }
 
-.nav-container{
+.fill-main{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background: var(--nav-bar);
-    min-height: 240px;
-    padding: 1rem;
-}
-
-.nav-text{
-    font-size: var(--hero-text-size);
-    color: var(--light-text);
-    padding: 1rem;
-}
-.nav-button-container{
-    display: flex;
-    justify-content: space-between;
-}
-
-.nav-other-buttons{
-    display: flex;
-    gap: 1rem;
-}
-
-.nav-button {
-    text-align: center;
-    font-size: var(--button-text-size);
-    font-weight: bold;
-    color: var(--light-text);
-    background-color: var(--nav-bar);
-    border: 2px solid var(--theme-accent);
-    padding: 0.75rem;
-    border-radius: 5px;
-    max-height: 1rem;
-}
-
-.nav-button:hover{
-    cursor: pointer;
-    background-color: var(--theme-accent);
-}
-
-.character-sheet{
-    grid-row: span 2;
-    border-radius: 5px;
-    background-color: var(--character-sheet);
-}
-
-.level-badge{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: var(--theme-accent);
-
-}
-
-.weight-chart{
-    grid-column: span 2;
-    border-radius: 5px;
+    flex-grow: 1;
 }

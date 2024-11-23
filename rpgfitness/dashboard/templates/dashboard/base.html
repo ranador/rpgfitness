@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>{% block title %}RPG Fitness{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/nav-style.css' %}">
+    <script type="text/javascript" src={% static 'js/scripts.js'%}></script>
+    
+    {% block custom-css %}
+    
+    {% endblock custom-css %}
+
+</head>
+<body>
+    <div class="page-layout">
+        <div class="margin-left">&nbsp;</div>
+        <div class="main-column">
+            <!-- Navbar -->
+            <div class="nav-container">
+                <div class="nav-text">Test</div>
+                <div class="nav-button-container">
+                    <a href="{% url 'index' %}"><div class="nav-button">Home</div></a>
+                    <div class="nav-other-buttons">
+                        <a href="{% url 'update' %}"><div class="nav-button">Update</div></a>
+                        <div class="nav-button">Settings</div>
+                        <div class="nav-button">Logout</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            
+                {% block content %}
+                
+
+                
+                {% endblock content %}
+            
+            <div class="fill-main">&nbsp;</div>
+            <!-- Footer content -->
+            <div class="footer">
+
+                {% block footer %}
+                    (c) Copyright 2024
+                {% endblock footer %}
+                
+            </div>  
+        </div>
+        <div class="margin-right">&nbsp;</div>
+    </div>
+</body>
+</html>
