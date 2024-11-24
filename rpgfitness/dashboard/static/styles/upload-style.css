@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
     width: 30%;
-    height: 200px;
+    min-height: 200px;
     border: 2px solid #ccc;
     border-radius: 5px;
     text-align: center;
@@ -39,7 +39,6 @@
 }
 
 .file-uploaded-list-cell{
-    columns: 2;
     display: flex;
     justify-content: flex-start;
     padding: 0.5rem;
@@ -54,7 +53,7 @@
 .file-uploaded-image img{
     display: flex;
     align-items: center;
-    width: 5rem;
+    width: 4rem;
     height: auto;
 }
 
@@ -63,4 +62,13 @@
     align-items: center;   
     font-size: 12px;
     flex-grow: 1;
+}
+
+.file-load-button{
+    background-color: var(--theme-accent);
+    color: var(--light-text);
+    border-radius: 5px;
+    padding:0.5rem 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
 }

@@ -2,28 +2,35 @@
 {% load static %}
 
 {% block custom-css %}
-<link rel="stylesheet" href="{% static 'styles/upload-style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/upload-style.css' %}">
 {% endblock custom-css %}
 
+{% block early-script %}
+    <script type="text/javascript" src={% static 'js/upload-scripts.js'%}></script>
+{% endblock early-script %}
 
 {% block title %}Update Database{% endblock title %}
             <!-- Page content -->
             {% block content %}
 
-                <form id="upload-form" method="post">
+                <form id="upload-form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <input type="file" id="file-input" name="files" multiple style="display: none;">
+                    
                     <div id="drop-zone" class="upload-box" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
                         <img src="{% static 'images/cloud.png' %}" alt="Upload icon" class="upload-icon">
-                        <p>Drag and drop files here</p>
+                        <p>Drag and drop *.csv files here</p>
+                        <label for="file-input" class="file-load-button">Select Files</label>
+                        <input type="file" id="file-input" name="files" accept=".csv" multiple style="display:none;">
                     </div>
+                    <input type="submit" value="Submit" style="display:none;">
                 </form>
 
                 <div class="file-uploaded-list">
                     {% for file in files %}
                         <div class="file-uploaded-list-cell">
                             <div class="file-uploaded-image">
-                                <img src="/media/{{ file }}" alt="Uploaded image" class="max-w-md mb-4"> 
+                                {% comment %} <img src="/media/{{ file }}" alt="Uploaded image">  {% endcomment %}
+                                <img src="{% static 'images/csv-file.png' %}" alt="Uploaded image"> 
                             </div>
                             <div class="file-uploaded-filename">{{file}}</div>
                         </div>
@@ -53,9 +60,19 @@
                         </div>
                 </div> {% endcomment %}
 
-                <div class="vertical-buffer">&nbsp;</div>
+                {% comment %} <div class="vertical-buffer">&nbsp;</div> {% endcomment %}
 
             {% endblock content %}
+
+            {% block late-script %}
+            <script>
+                document.getElementById('file-input').addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        document.getElementById('upload-form').submit();
+                    }
+                });
+            </script>
+            {% endblock late-script %}
 
             {% block footer %}(c) Copyright 2024{% endblock footer %}
 

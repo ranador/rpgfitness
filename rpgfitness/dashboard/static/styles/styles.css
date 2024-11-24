@@ -37,6 +37,39 @@ a {
     border: 2px solid var(--gold-accent);
 } */
 
+.warning, .success{
+    width: 40%;
+    padding: 1rem;
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    opacity: 0.8;
+    display: none;
+}
+
+.warning{
+    color: red;
+    background-color: rgb(233, 142, 142);
+    border: 2px solid red;
+}
+
+.success{
+    color: rgb(13, 143, 34);
+    background-color: rgb(167, 216, 174);
+    border: 2px solid #0d8f22;
+}
+
+.warning img, .success img{
+    max-width: 50px;
+    vertical-align: middle;
+}
+
+.warning span, .success span{
+    vertical-align: middle;
+    padding-left: 1rem;
+}
+
 .margin-left{
     background: var(--margin-gradient-left);
 }

@@ -14,8 +14,12 @@
     
     {% endblock custom-css %}
 
+    {% block early-script %}{% endblock early-script %}
+
 </head>
 <body>
+    <div class="warning" id="warning"><img src="{% static 'images/warning.png' %}"><span class="message"></span></div>
+    <div class="success" id="success"><img src="{% static 'images/success.png' %}"><span class="message"></span></div>
     <div class="page-layout">
         <div class="margin-left">&nbsp;</div>
         <div class="main-column">
@@ -32,14 +36,24 @@
                 </div>
             </div>
             <!-- Page content -->
-            
+            <div>&nbsp;</div>
                 {% block content %}
-                
 
-                
                 {% endblock content %}
             
             <div class="fill-main">&nbsp;</div>
+
+            
+            <!-- Check for a message and type in the context dict and display if present -->
+            {% if message and type %}
+            <script> 
+                showMessage("{{ type }}", "{{ message }}");
+            </script>
+            {% endif %}
+
+            <!-- Area for scripts that have to appear later on the page to work -->
+            {% block late-script %}{% endblock late-script %}
+
             <!-- Footer content -->
             <div class="footer">
 
