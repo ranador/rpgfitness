@@ -16,7 +16,7 @@ def update(request):
     # print("FILES data:", request.FILES)
     # print("Headers:", request.headers)
 
-    context = {'message': 'No files uploaded', 'request': f'{request}'}
+    context = {'type': 'warning', 'message': 'No files uploaded', 'request': f'{request}'}
     if request.method == 'POST':
         files = request.FILES.getlist('files')
 
@@ -25,7 +25,7 @@ def update(request):
             path = f'uploads/{f.name}'
             uploaded_files.append(path)
             default_storage.save(path, f)
-        context = {'message': 'All files uploaded successfully', 'files': uploaded_files}
+        context = {'type': 'success', 'message': 'All files uploaded successfully', 'files': uploaded_files}
     return render(request, 'dashboard/update.html', context)
 
 def contact(request):
